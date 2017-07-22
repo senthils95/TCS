@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	{%load static%}
+	<link rel="stylesheet" type="text/css" href="{%static 'accounts/log.css'%}" >
+	<title>LOGIN</title>
+	
+	
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="container">
+		
+			<h1>WELCOME</h1>
+			<h2>LOGIN</h2>
+			<form method="post">
+				{%csrf_token%}
+				{{form.as_p}}
+				<button type="submit">Login</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

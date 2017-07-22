@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #b3e5cb;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #88ceaa;
+    color: white;
+}
+</style>
+
+<title>View_Approval</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3" style=" background-color:#9bddbb; ">
+            <h2>FILTER</h2>           
+            
+            <h4>IOU</h4>
+            
+            <form action="{% url 'view_filtered' %}" method="post">
+            {% csrf_token %}
+                {% for data in viou %}
+                    <input type="checkbox" name="viou" value="{{ data.iou }}"> {{ data.iou }} <br>  
+                {% endfor %}
+                
+                <h4>Branch</h4>
+                {% for data in vbranch %}
+                    <input type="checkbox" name="vbranch" value="{{ data.branch }}"> {{ data.branch }} <br>
+                {% endfor %}
+                
+                <h4>Account</h4>
+                {% for data in vname%}
+                    <input type="checkbox" name="vname" value="{{ data.name }}"> {{ data.name }} <br>
+                {% endfor %}
+                <br><br>
+                <input type="submit" name="type" value="Filter">
+                <input type="submit" name="type" value="Clear">
+            </form>
+        </div>        
+        <div class="col-xs-9">
+          <form action="{% url 'edit_view' %}" method="post">
+          {% csrf_token %}
+            <table id="customers">
+              <tr>
+                  <th>rgs_id</th>
+                  <th>old rgs id</th>
+                  <th>rgs id status</th>  
+                  <th>role</th>
+                  <th>rskill</th>
+                  <th>texp</th>
+                  <th>branch</th>
+                  <th>iou</th>
+                  <th>riou</th>
+                  <th>name</th>
+                  <th>asn_date</th>
+                  <th>rbranch</th>
+                  <th>sbranch</th>
+                  <th>recruiter</th>
+                  <th>remarks</th>  
+                  <th>status</th>
+                  <th>num cv</th>
+                  <th>fb pending</th>
+                  <th>scr rej</th>
+                  <th>shortlists</th>
+                  <th>tr s/h</th>
+                  <th>tr r</th>
+                  <th>mr s/h</th>
+                  <th>mr r</th>
+                  <th>hr s/h</th>
+                  <th>hr r</th>
+                  <th>num process</th>
+                  <th>num released</th>
+                  <th>cd1 emp num</th>
+                  <th>cd1 name</th>
+                  <th>cd1 js</th>
+                  <th>cd1 doj</th>
+                  <th>cd2 emp num</th>
+                  <th>cd2 name</th>
+                  <th>cd2 js</th>
+                  <th>cd2 doj</th>
+              </tr>
+              {% for data in approval_data %}                
+              <tr>
+                  <td><input type="radio" name="ergs_id" value="{{ data.rgs_id }}">{{ data.rgs_id }}</td>
+                  <td>{{ data.old_rgs_id }}</td>
+                  <td>{{ data.rgs_id_status }}</td>   
+                  <td>{{ data.role }}</td>
+                  <td>{{ data.rskill }}</td>
+                  <td>{{ data.texp }}</td>
+                  <td>{{ data.branch }}</td>
+                  <td>{{ data.iou }}</td>
+                  <td>{{ data.riou }}</td>
+                  <td>{{ data.name }}</td>
+                  <td>{{ data.asn_date }}</td>
+                  <td>{{ data.rbranch }}</td>
+                  <td>{{ data.sbranch }}</td>
+                  <td>{{ data.recruiter }}</td>
+                  <td>{{ data.remarks }}</td>  
+                  <td>{{ data.status }}</td>
+                  <td>{{ data.num_cv }}</td>
+                  <td>{{ data.fb_pending }}</td>
+                  <td>{{ data.scr_rej }}</td>
+                  <td>{{ data.shortlists }}</td>
+                  <td>{{ data.tr_s_h }}</td>
+                  <td>{{ data.tr_r }}</td>
+                  <td>{{ data.mr_s_h }}</td>
+                  <td>{{ data.mr_r }}</td>
+                  <td>{{ data.hr_s_h }}</td>
+                  <td>{{ data.hr_r }}</td>
+                  <td>{{ data.num_process }}</td>
+                  <td>{{ data.num_released }}</td>
+                  <td>{{ data.cd1_emp_num }}</td>
+                  <td>{{ data.cd1_name }}</td>
+                  <td>{{ data.cd1_js }}</td>
+                  <td>{{ data.cd1_doj }}</td>
+                  <td>{{ data.cd2_emp_num }}</td>
+                  <td>{{ data.cd2_name }}</td>
+                  <td>{{ data.cd2_js }}</td>
+                  <td>{{ data.cd2_doj }} </td>
+              </tr>              
+              {% endfor %}
+            </table>
+            <input type="submit" name="type" value="EDIT">
+            <input type="submit" name="type" value="DEL">
+          </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

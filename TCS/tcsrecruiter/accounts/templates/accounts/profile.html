@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>{{header}}</h1>
+
+    {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+
+    <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                <div class="well">
+                    <form action="upload/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <label>Upload File</label>
+                        <input type="text" name="id" value="0}" hidden="True">
+                        <input class="file-up" type="file" name="file" />
+                        <button class="btn btn-default">Submit</button>
+                    </form>
+                </div>  
+              </div>
+            </div>
+</body>
+</html>

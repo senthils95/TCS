@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>approval</title>
+<script src="https://use.fontawesome.com/22cdd2d900.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+body{
+    margin:0;
+}
+.adjust{
+    padding:10% 25% 0% 25%;
+    text-align:center;
+    word-spacing:10px;
+}
+input[type=file]{
+    color:blue;
+    margin-top:20%;
+    margin-left:3%;
+    text-align:center;
+    padding-left:20%;
+}
+input[type=submit]{
+    background-color:rgb(76, 175, 80);
+    color:white;
+    margin:20% 20% 5% 20%;
+    padding:3% 5% 3% 5%;
+    font-size:16px;
+}
+div.jumbotron:hover{
+    border:2px solid  #88ceaa;
+}
+#nxt a{
+    float:right;
+    font-size:20px;
+    padding-top:5%;
+}
+</style>
+</head>
+<body>
+    {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="adjust">
+                    <div class="jumbotron">
+                        <h2><b>Approval Master Sheet</b></h2>
+                            <form enctype="multipart/form-data"  method="post">
+                                <table>
+                                    {{ form.as_table }}
+                                </table>
+                                {% csrf_token %}
+                                <input type="submit" value="Submit">
+                            </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

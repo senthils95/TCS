@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View_Source</title>
+</head>
+<body>
+    <table border=3pt>
+        <tr>
+            <th>sl_no</th>
+            <th>dot</th>    
+            <th>branch</th>
+            <th>sname</th>
+            <th>snum</th>
+            <th>can_name</th>            
+            <th>sdetail</th>
+            <th>main_skill</th>
+            <th>uname</th>
+            <th>cus_name</th>
+            <th>ep_num</th>
+            <th>day</th>
+            <th>doi</th>
+            <th>status</th> 
+            <th>cont_num</th>
+            <th>email_id</th>
+            <th>texp</th>
+            <th>rexp</th>
+            <th>cu_org</th>
+            <th>cu_loc</th>
+            <th>pref_loc</th>
+            <th>cu_ctc</th>
+            <th>exp_ctc_in_percentage</th>
+            <th>notice_period</th>
+        </tr>
+        {% for data in source_data %}
+        <tr>
+            <td>{{ data.sl_no }}</td>
+            <td>{{ data.dot }}</td> 
+            <td>{{ data.branch }}</td>
+            <td>{{ data.sname }}</td>
+            <td>{{ data.snum }}</td>
+            <td>{{ data.can_name }}</td>
+            <td>{{ data.sdetail }}</td>
+            <td>{{ data.main_skills }}</td>
+            <td>{{ data.uname }}</td>
+            <td>{{ data.cus_name }}</td>
+            <td>{{ data.ep_num }}</td>
+            <td>{{ data.day }}</td>
+            <td>{{ data.doi }}</td>
+            <td>{{ data.status }}</td>
+            <td>{{ data.cont_num }}</td>
+            <td>{{ data.email_id }}</td>
+            <td>{{ data.texp }}</td>
+            <td>{{ data.rexp }}</td>
+            <td>{{ data.cu_org }}</td>
+            <td>{{ data.cu_loc }}</td>
+            <td>{{ data.pref_loc }}</td>
+            <td>{{ data.cu_ctc }}</td>
+            <td>{{ data.exp_ctc}}</td>
+            <td>{{ data.notice_period }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>

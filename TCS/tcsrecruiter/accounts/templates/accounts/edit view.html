@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit_Approval</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12" style=" background-color:#9bddbb; ">
+            <h2>EDIT</h2>
+            <form action="{% url 'update_db' %}" method="post">
+            {% csrf_token %}
+             {% for data in approval_data %}
+                RGS ID: <input type="text" name="rgs_id" value="{{ data.rgs_id }}"><br>
+                OLD RGS ID: <input type="text" name="old_rgs_id" value="{{ data.old_rgs_id }}"><br>
+                RGS ID STATUS: <input type="text" name="rgs_id_status" value="{{ data.rgs_id_status }}"><br>
+                ROLE: <input type="text" name="role" value=" {{ data.role }}"><br>
+                RSKILL: <textarea rows="4" cols="50" name="rskill" value=" {{ data.rskill }}">{{ data.rskill }}</textarea><br>
+                <input type="submit" value="SAVE">
+                
+             {% endfor %}
+            </form>
+        </div>      
+    </div>
+</div>   
+</body>
+</html>
